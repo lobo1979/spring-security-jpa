@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+
+  <script>
+        function openPopup(id){
+            let confirmAction = confirm("Are you sure to delete this department?");
+            if (confirmAction) {
+              window.location = '/deleteDepartment/'+id;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div class="container my-2">
+  <!-- @ reprezentuje root webovu adresu aplikacie -->
+  <h1>Department List</h1>
+  <a th:href="@{/showNewDepartment}" class="btn btn-info mb-4 my-2 col-3"> Add Department </a>
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Department ID</th>
+      <th>Department Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dep:${listDepartments}">
+      <td th:text="${dep.id}"></td>
+      <td th:text="${dep.name}"></td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <a th:href="@{/showFormForUpdateDepartment/{id}(id=${dep.id})}" class="btn btn-info col-6">Update</a>
+          <button th:attr="onclick=|openPopup('${dep.id}')|" class="btn btn-danger col-6">Delete</button>
+          <!--<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger col-6">Delete</a>-->
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <a th:href = "@{/}">Back to employee list</a>
+</div>
+</body>
+</html>
