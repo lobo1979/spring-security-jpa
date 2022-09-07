@@ -23,7 +23,7 @@
 
     <label class="form-label mt-2" for="exampleSelect1">Department</label>
     </p>
-    <select class="form-select" id="exampleSelect1" th:field="*{roles}">
+    <select multiple=""  class="form-select" id="exampleSelect1" th:field="*{roles}">
       <option th:each="rol:${listOfRoles}" th:value="${rol.id}" th:text="${rol.role}"></option>
     </select>
     </p>
