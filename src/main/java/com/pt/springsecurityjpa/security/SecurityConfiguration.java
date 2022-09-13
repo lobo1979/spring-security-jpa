@@ -25,8 +25,8 @@ public class SecurityConfiguration  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/employee", "/department").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/backbone").hasRole("ADMIN")
+                .antMatchers("/department" ).hasAnyRole("ADMIN", "USER")
                 .antMatchers("/").permitAll()
                 .and().formLogin();
         http.csrf().disable();

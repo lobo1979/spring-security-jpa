@@ -1,6 +1,7 @@
 package com.pt.springsecurityjpa.controller;
 
 import com.pt.springsecurityjpa.model.User;
+import com.pt.springsecurityjpa.service.ItemServiceImpl;
 import com.pt.springsecurityjpa.service.RolesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,36 +12,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class WebConrtoller {
 
     @Autowired
-    private RolesServiceImpl rolesService;
-
-
+    private ItemServiceImpl itemService;
 
     @GetMapping("/")
-    public String homePage(){
+    public String homePage(Model model){
+        model.addAttribute("listOfItems", itemService.getAllItems());
+
         return "index";
     }
 
-    @GetMapping("/employee")
-    public String employeePage(){
-        return "employee";
-    }
 
-    @GetMapping("/department")
-    public String departmentPage(){
-        return "department";
-    }
-
-    @GetMapping("/admin")
+   /* @GetMapping("/backbone")
     public String configurationPage(){
-        return "admin";
-    }
 
-    @GetMapping("/admin/showNewUserForm")
-    public String viewNewEmployeePage(Model model){
-        User user = new User();
-        model.addAttribute("user", user);
-        model.addAttribute("listOfRoles", rolesService.getAllRoles());
-        return "add-user";
-    }
+
+        return "/backbone/admin";
+    }*/
+
+
 
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop backbone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
+          integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="w-100">
+
+    <div th:replace="backbone/fragments/admin_navbar :: adminnavbar"></div>
+
+    <div class="row">
+        <div class="col-8" th:replace="backbone/fragments/admin_users ::  adminusers">
+
+        </div>
+
+    </div>
+
+</div>
+<div th:replace="~{backbone/fragments/admin_footer :: adminfooter}"></div>
+</body>
+</html>
