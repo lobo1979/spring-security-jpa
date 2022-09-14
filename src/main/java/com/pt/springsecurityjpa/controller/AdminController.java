@@ -65,6 +65,19 @@ public class AdminController {
         return "/backbone/item_add";
     }
 
+    @GetMapping("/item/update/{id}")
+    public String showFormForUpdateItem(@PathVariable long id, Model model) {
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("item", itemService.getItemById(id));
+        return "/backbone/item_update";
+    }
+
+    @GetMapping("/item/delete/{id}")
+    public String deleteItem(@PathVariable (value="id") long id) {
+        this.itemService.deleteItemById(id);
+        return "redirect:/backbone/item/all";
+    }
+
     @PostMapping("/user/save")
     public String addUserByAdmin(@ModelAttribute("User") User user) {
         String pwd = user.getPassword();

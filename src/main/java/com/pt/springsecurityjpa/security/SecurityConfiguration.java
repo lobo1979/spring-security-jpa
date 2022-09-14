@@ -26,8 +26,8 @@ public class SecurityConfiguration  {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/backbone").hasRole("ADMIN")
-                .antMatchers("/department" ).hasAnyRole("ADMIN", "USER")
-                .antMatchers("/").permitAll()
+                .antMatchers("/basket" ).hasAnyRole("ADMIN", "USER")
+                .antMatchers("/","/item", "/basket").permitAll()
                 .and().formLogin();
         http.csrf().disable();
 

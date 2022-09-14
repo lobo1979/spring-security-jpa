@@ -1,0 +1,29 @@
+<div class="mx-4" th:fragment="userbasket">
+    <form method="post" th:object="${basketList}">
+        <div class="my-2">
+            <!-- @ reprezentuje root webovu adresu aplikacie -->
+            <h1>Košík</h1>
+            <p>
+
+            <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+            <tr>
+                <th>Názov položky</th>
+                <th>Farba</th>
+                <th>Velkosť</th>
+                <th>Počet</th>
+                <th>Cena</th>
+            </tr>
+            </thead>
+                <tbody>
+                <tr th:each="itm:${basketList}">
+                    <td th:text="${itm.items?.name}"></td>
+                    <td th:text="${itm.color}"></td>
+                    <td th:text="${itm.size}"></td>
+                    <td th:text="${itm.pcs}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

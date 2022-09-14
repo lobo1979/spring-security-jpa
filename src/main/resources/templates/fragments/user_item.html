@@ -1,0 +1,57 @@
+<div class="mx-4" th:fragment="useritem">
+    <form th:action="@{/basket/item/save/{userName}(userName=${#authentication.name})}" method="post"  th:object="${item}" enctype="multipart/form-data">
+        <div class="my-2  col-12">
+            <!-- @ reprezentuje root webovu adresu aplikacie -->
+            <!--img th:src="/@{*{photosImagePath}}"/-->
+
+            <!--label class="form-label mt-4" for="inputID">ID</label-->
+            <input type="hidden" th:field="*{id}" class="form-control col-4" id="inputID">
+            <!--label class="form-label mt-4" for="inputName">Názov položky</label-->
+
+            <h3><span th:text="*{name}" th:remove="tag">Title</span></h3>
+            <p>
+            <p>
+            <p>
+            <!--input type="text" th:field="*{name}" class="form-control col-4" id="inputName"-->
+            <!--label class="form-label mt-4" for="inputDescription">Popis položky</label-->
+            <!--input type="text" class="form-control col-4" id="inputDescription"-->
+            <textarea class="form-control col-8" id="inputDescription" th:field="*{description}" rows="6" readonly=""></textarea>
+            <p>
+            <p>
+            <div class="form-group col-6">
+                <label for="dipsColor">Farba</label>
+                <!--textarea class="form-control col-1" th:field="*{color}" id="dipsColor" rows="1" readonly=""></textarea-->
+                <select name="color" th:field="*{color}" id="dipsColor">
+
+                    <option th:each="col : ${T(com.pt.springsecurityjpa.model.EColor).values()}"
+                            th:value="${col}"
+                            th:text="${col.displayValue}">
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="form-group  col-6">
+                <label for="dipsSize">Veľkosť:</label><label id="dipsSize" th:field="*{size}">Veľkosť:</label>
+                <!--textarea class=" form-control col-1" th:field="*{size}" id="dipsSize" rows="1" readonly=""></textarea-->
+                <select name="size" id="dipsSize" th:field="*{size}">
+                    <option th:each="siz : ${T(com.pt.springsecurityjpa.model.ESize).values()}"
+                            th:value="${siz}"
+                            th:text="${siz.displayValue}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group col-8">
+                <label class="form-label mt-1" for="inputpcs">Počet:</label>
+                <input type="text" th:field="*{pocet}" class="form-control col-2" id="inputpcs">
+                <!--input type="numeric" step="1" min="0" max="10" th:field="*{pocet}" class="form-control col-1" style = "background: lightgrey; color: Black;" id="inputpcs"></input-->
+            </div>
+
+            <button type="submit" class="btn btn-info col-1">Kúpiť</button>
+
+            <hr>
+
+        </div>
+    </form>
+</div>

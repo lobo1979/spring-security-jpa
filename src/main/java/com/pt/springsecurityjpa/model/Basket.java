@@ -11,16 +11,19 @@ public class Basket {
     @Column(name = "basket_id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false, referencedColumnName = "user_id")
     private User user;
 
-    private Integer pcs;
+    private String color;
+
+    private String size;
+    private String pcs;
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "basket_item", joinColumns = @JoinColumn(name = "basket_id"), inverseJoinColumns = @JoinColumn(name = "item_id"))
-    private List<Item> items;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id", nullable = false, referencedColumnName = "item_id")
+    private Item items;
 
 
     public Long getId() {
@@ -32,8 +35,43 @@ public class Basket {
     }
 
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public String getPcs() {
+        return pcs;
+    }
 
+    public void setPcs(String pcs) {
+        this.pcs = pcs;
+    }
 
+    public Item getItems() {
+        return items;
+    }
+
+    public void setItems(Item items) {
+        this.items = items;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 }

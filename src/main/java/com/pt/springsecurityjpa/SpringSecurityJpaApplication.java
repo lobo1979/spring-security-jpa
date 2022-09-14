@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.Arrays;
 
 // dony by https://www.youtube.com/watch?v=TNt3GHuayXs
+// https://o7planning.org/10683/create-a-shopping-cart-web-application-with-spring-boot-hibernate
 @SpringBootApplication
 public class SpringSecurityJpaApplication {
 

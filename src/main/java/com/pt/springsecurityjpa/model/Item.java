@@ -24,6 +24,10 @@ public class Item {
 
     private String size;
 
+    private String pocet;
+
+
+
 
     //Priklad na priame napojenie na jednu tabulku
     @ManyToOne(fetch = FetchType.EAGER)
@@ -93,4 +97,11 @@ public class Item {
     }
 
 
+    public String getPocet() {
+        return pocet;
+    }
+
+    public void setPocet(String pocet) {
+        this.pocet = pocet;
+    }
 }

@@ -7,12 +7,12 @@ import java.util.List;
 
 public interface BasketService {
 
-    List<Basket> getAllItems();
+    List<Basket> getAllBaskets();
 
-    void saveItem(Basket item);
+    void saveBasket(Basket basket);
 
-    Basket getItemById(long id);
+    Basket getBasketById(long id);
 
-    void deleteItemById(long id);
+    void deleteBasketById(long id);
 
 }

@@ -1,5 +1,5 @@
 <div class = "mx-4" th:fragment="adminitems">
-    <div class="container my-2">
+    <div class="my-2">
         <!-- @ reprezentuje root webovu adresu aplikacie -->
         <h1>Položky</h1>
         <a th:href="@{/backbone/item/add}" class="btn btn-info mb-4 my-2 col-3">Pridaj položku</a>
@@ -22,8 +22,8 @@
                 <td th:text="${itm.size}"></td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <a th:href="@{/item/update/{id}(id=${itm.id})}" class="btn btn-info col-6">Upraviť</a>
-                        <a th:href="@{/item/delete/{id}(id=${itm.id})}" class="btn btn-danger col-6">Zmazať</a>
+                        <a th:href="@{/backbone/item/update/{id}(id=${itm.id})}" class="btn btn-info col-6">Upraviť</a>
+                        <a th:href="@{/backbone/item/delete/{id}(id=${itm.id})}" class="btn btn-danger col-6">Zmazať</a>
                     </div>
                 </td>
             </tr>
