@@ -7,14 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
           integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
 
-    <style>
-        footer {
-            background-color: #777;
-            padding: 10px;
-            text-align: center;
-            color: white;
-        }
-    </style>
+    <div th:replace="~{fragments/user_footer :: userfooter-css}"></div>
 
 </head>
 <body>
@@ -128,7 +121,5 @@
 </div>
 
 </body>
-<footer class="footer">
-    <p class="text-muted">Made by Peter T.</p>
-</footer>
+<div th:replace="~{fragments/user_footer :: userfooter}"></div>
 </html>

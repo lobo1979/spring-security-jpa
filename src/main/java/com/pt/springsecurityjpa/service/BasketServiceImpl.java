@@ -2,11 +2,12 @@ package com.pt.springsecurityjpa.service;
 
 import com.pt.springsecurityjpa.model.Basket;
 import com.pt.springsecurityjpa.repository.BasketRepository;
-import com.pt.springsecurityjpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -33,6 +34,12 @@ public class BasketServiceImpl implements BasketService{
     @Override
     public void deleteBasketById(long id) {
         basketRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Basket> findPaginated(int pageNo, int pageSize) {
+        Pageable pagable = PageRequest.of(pageNo-1, pageSize);
+        return this.basketRepository.findAll(pagable);
     }
 
     public List<Basket> getBasketItemsByUserName(String username) {

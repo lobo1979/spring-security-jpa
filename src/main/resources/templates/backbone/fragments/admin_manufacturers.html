@@ -1,0 +1,50 @@
+<div class = "mx-4 col-sm-8" th:fragment="adminmanufacturers">
+    <div class="my-2">
+        <!-- @ reprezentuje root webovu adresu aplikacie -->
+        <h1>Výrobcovia</h1>
+        <hr>
+        <a th:href="@{/backbone/manufacturer/add}" class="btn btn-info mb-4 my-2 col-3">Pridaj výrobcu</a>
+        <table border="1" class="table table-striped table-responsive-md col-sm-6">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Názov</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="itm:${listOfManufacturers}">
+                <td class="col-sm-1" th:text="${itm.id}"></td>
+                <td class="col-sm-4"th:text="${itm.name}"></td>
+                <td class="col-sm-1">
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <a th:href="@{/backbone/manufacturer/update/{id}(id=${itm.id})}" class="btn btn-info col-6">Upraviť</a>
+                        <a th:href="@{/backbone/manufacturer/delete/{id}(id=${itm.id})}" class="btn btn-danger col-6">Zmazať</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div th:if = "${totalPages} > 1">
+            <div class="row col-sm-8">
+                <div class="col-sm-4">Počet výrobcov: [[${totalItems}]]</div>
+                <div class="col-sm-2">
+                    <span th:each = "i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if = "${currentPage != i}" th:href="@{'/backbone/manufacturer/page/' + ${i}}" >[[${i}]]</a>
+                        <span th:unless = "${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+                </div>
+                <div class="col-sm-1">
+                    <a th:if = "${currentPage < totalPages}" th:href="@{'/backbone/manufacturer/page/' + ${currentPage + 1}}" >Next</a>
+                    <span th:unless = "${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+                </div>
+                <div class="col-sm-1">
+                    <a th:if = "${currentPage < totalPages}" th:href="@{'/backbone/manufacturer/page/' + ${totalPages}}" >Last</a>
+                    <span th:unless = "${currentPage < totalPages}">Last</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

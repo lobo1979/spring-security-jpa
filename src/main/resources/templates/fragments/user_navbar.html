@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PT shop</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
           integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
-
-
 </head>
 <body>
 <div th:fragment="usernavbar">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" href="#">PT Shop</a>
+        <a class="navbar-brand" th:href="@{/}">PT Shop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,9 +19,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/backbone}">Konfigurácia<span class="sr-only">(current)</span></a>
-                </li>
+
+                <!--https://www.baeldung.com/spring-security-taglibs-->
+                <sec:authorize access="hasRole('ADMIN')">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/backbone/}">Konfigurácia<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                </sec:authorize>
+
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/item/all}">Trička</a>
                 </li>
@@ -37,7 +41,7 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-            <div sec:authorize="isAnonymous()">
+            <div sec:authorize="!isAuthenticated()">
                 <ul class="navbar-nav mr-auto">
                     <table class="mx-3">
                         <tr>
@@ -59,6 +63,9 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;"><span sec:authentication="name">Bob</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><span sec:authentication="principal.authorities"></span></td>
                         </tr>
                         <tr>
                             <td style="text-align: center;">

@@ -1,20 +1,19 @@
-<div class="mx-4" th:fragment="userbasket">
+<div class="mx-4 col-sm-8" th:fragment="userbasket">
     <form method="post" th:object="${basketList}">
         <div class="my-2">
             <!-- @ reprezentuje root webovu adresu aplikacie -->
             <h1>Košík</h1>
-            <p>
-
+            <hr>
             <table border="1" class="table table-striped table-responsive-md">
-            <thead>
-            <tr>
-                <th>Názov položky</th>
-                <th>Farba</th>
-                <th>Velkosť</th>
-                <th>Počet</th>
-                <th>Cena</th>
-            </tr>
-            </thead>
+                <thead>
+                <tr>
+                    <th>Názov položky</th>
+                    <th>Farba</th>
+                    <th>Velkosť</th>
+                    <th>Počet</th>
+                    <th>Cena</th>
+                </tr>
+                </thead>
                 <tbody>
                 <tr th:each="itm:${basketList}">
                     <td th:text="${itm.items?.name}"></td>
@@ -24,6 +23,26 @@
                 </tr>
                 </tbody>
             </table>
+            <hr>
+            <!--div th:if="${totalPages} > 1">
+                <div class="row col-sm-15">
+                    <div class="col-sm-3">Počet položiek: [[${totalItems}]]</div>
+                    <div class="col-sm-2">
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{'/basket/item/page/' + ${i}}">[[${i}]]</a>
+                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+                    </div>
+                    div class="col-sm-1">
+                    <a th:if="${currentPage < totalPages}"
+                       th:href="@{'/basket/item/page/' + ${currentPage + 1}}">Next</a>
+                    <span th:unless="${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+                </div>
+                <div class="col-sm-1">
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/basket/item/page/' + ${totalPages}}">Last</a>
+                    <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
+            </div-->
         </div>
     </form>
 </div>

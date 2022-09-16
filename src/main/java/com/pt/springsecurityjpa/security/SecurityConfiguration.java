@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -22,14 +23,29 @@ public class SecurityConfiguration  {
     @Autowired
     UserDetailsService userDetailService;
 
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests()
-                .antMatchers("/backbone").hasRole("ADMIN")
-                .antMatchers("/basket" ).hasAnyRole("ADMIN", "USER")
-                .antMatchers("/","/item", "/basket").permitAll()
-                .and().formLogin();
-        http.csrf().disable();
+
+
+        http.csrf().disable()
+                .authorizeHttpRequests()
+                    .antMatchers("/","/item").permitAll()
+                    .antMatchers("/backbone/**").hasAnyRole("ADMIN")
+                    .antMatchers("/basket/**" ).hasAnyRole("ADMIN", "USER")
+                    .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                    //.loginPage("/login") //Do not add unless you have your own HTTP page, else it will crash.
+                    .permitAll()
+                    .and()
+                .logout()
+                    .permitAll()
+                    .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+
 
         return http.build();
     }

@@ -7,10 +7,12 @@ import com.pt.springsecurityjpa.repository.UserRepository;
 import com.pt.springsecurityjpa.service.BasketServiceImpl;
 import com.pt.springsecurityjpa.service.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,13 +38,12 @@ public class BasketConrtoller {
 
     @GetMapping("/all")
     public String homeItemsPage(Model model){
-        model.addAttribute("listOfItems", itemService.getAllItems());
-
-        return "index";
+        model.addAttribute("basketList", basketService.getAllBaskets());
+        return "basket";
     }
 
     @GetMapping("/item/{userName}/{itemId}")
-    public String showFormForUpdate(@PathVariable String userName, @PathVariable long itemId, Model model) {
+    public String showFormForUpdate( @PathVariable String userName, @PathVariable long itemId, Model model) {
         model.addAttribute("item", itemService.getItemById(itemId));
         return "item";
     }
@@ -63,15 +64,12 @@ public class BasketConrtoller {
         basket.setSize(item.getSize());
 
         basketService.saveBasket(basket);
-
-
-        //System.out.println(userName);
-
-        //model.addAttribute("item", itemService.getItemById(itemId));
-
         return "redirect:/item/all";
     }
 
-
+    @GetMapping("/403")
+    public String error403() {
+        return "403";
+    }
 
 }

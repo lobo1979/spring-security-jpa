@@ -1,10 +1,11 @@
 package com.pt.springsecurityjpa.service;
 
 import com.pt.springsecurityjpa.model.Item;
-import com.pt.springsecurityjpa.model.Role;
 import com.pt.springsecurityjpa.repository.ItemRepository;
-import com.pt.springsecurityjpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void saveItem(Item item) {
-        itemRepository.save(item);
+    public <S extends Item> S saveItem(S item) {
+        return itemRepository.save(item);
     }
 
     @Override
@@ -33,6 +34,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void deleteItemById(long id) {
         itemRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Item> findPaginated(int pageNo, int pageSize) {
+        Pageable pagable = PageRequest.of(pageNo-1, pageSize);
+        return itemRepository.findAll(pagable);
     }
 
 }

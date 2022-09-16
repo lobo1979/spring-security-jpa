@@ -27,8 +27,6 @@ public class Item {
     private String pocet;
 
 
-
-
     //Priklad na priame napojenie na jednu tabulku
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manufacturer_id", referencedColumnName = "id")

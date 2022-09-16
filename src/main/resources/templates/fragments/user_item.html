@@ -1,4 +1,4 @@
-<div class="mx-4" th:fragment="useritem">
+<div class="mx-4 col-sm-8" th:fragment="useritem">
     <form th:action="@{/basket/item/save/{userName}(userName=${#authentication.name})}" method="post"  th:object="${item}" enctype="multipart/form-data">
         <div class="my-2  col-12">
             <!-- @ reprezentuje root webovu adresu aplikacie -->
@@ -32,9 +32,9 @@
             </div>
 
             <div class="form-group  col-6">
-                <label for="dipsSize">Veľkosť:</label><label id="dipsSize" th:field="*{size}">Veľkosť:</label>
+                <label id="dipsSize" th:field="*{size}">Veľkosť:</label>
                 <!--textarea class=" form-control col-1" th:field="*{size}" id="dipsSize" rows="1" readonly=""></textarea-->
-                <select name="size" id="dipsSize" th:field="*{size}">
+                <select name="size" id="dipsSize2" th:field="*{size}">
                     <option th:each="siz : ${T(com.pt.springsecurityjpa.model.ESize).values()}"
                             th:value="${siz}"
                             th:text="${siz.displayValue}">

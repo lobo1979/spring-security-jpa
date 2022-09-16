@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+
+    <title>Nový používateľ</title>
+</head>
 <div class="mx-4" th:fragment="adminadditem">
     <form th:action="@{/backbone/item/save}" th:object="${item}" method="post" enctype="multipart/form-data">
 
@@ -14,35 +22,22 @@
 
         <p>
 
-        <div class="form-group">
-            <label for="dipsColor">Farba</label>
-            <select name="color" th:field="*{color}" id="dipsColor">
 
-                <option th:each="col : ${T(com.pt.springsecurityjpa.model.EColor).values()}"
-                        th:value="${col}"
-                        th:text="${col.displayValue}">
+        <div class="form-group">
+            <label for="dipsManufacturer">Výrobca: </label>
+            <select class="form-select"  name="manufacturer" th:field="*{manufacturer}" id="dipsManufacturer">
+
+                <option th:each="man : ${listOfManufacturers}"
+                        th:value="${man.id}"
+                        th:text="${man.name}">
                 </option>
 
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="dipsSize">Veľkosť</label>
-
-            <select name="size" id="dipsSize" th:field="*{size}">
-                <option th:each="siz : ${T(com.pt.springsecurityjpa.model.ESize).values()}"
-                        th:value="${siz}"
-                        th:text="${siz.displayValue}">
-                </option>
-            </select>
-
-        </div>
-
-
-        <button type="submit" class="btn btn-info col-3">Uložiť</button>
 
         <hr>
-
+        <button type="submit" class="btn btn-info col-3">Uložiť</button>
 
         <div>
             <label>Obrázky: </label>
@@ -53,3 +48,4 @@
     </form>
 
 </div>
+</html>

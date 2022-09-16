@@ -8,8 +8,9 @@
 </head>
 <div class = "mx-4" th:fragment="adminupdateuser">
   <h1>Upraviť údaje o použivateľovi</h1>
-  <hr>
+
   <form action="#" th:action="@{/backbone/user/save}" th:object="${user}" method="POST">
+    <hr>
     <label class="form-label mt-4" for="inputID">ID</label>
     <input type="text" th:field="*{id}" class="form-control col-4" id="inputID">
     <label class="form-label mt-4" for="inputLogin">Login</label>
@@ -29,11 +30,9 @@
       <option th:each="rol:${listOfRoles}" th:value="${rol.id}" th:text="${rol.role}"></option>
     </select>
     </p>
-
+    <hr>
     <button type="submit" class="btn btn-info col-3">Uložiť</button>
   </form>
-
-  <hr>
 
 </div>
 </html>
