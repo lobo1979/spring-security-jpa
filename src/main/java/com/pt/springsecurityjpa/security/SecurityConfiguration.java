@@ -32,7 +32,7 @@ public class SecurityConfiguration  {
 
         http.csrf().disable()
                 .authorizeHttpRequests()
-                    .antMatchers("/","/item").permitAll()
+                    .antMatchers("/","/item","/item/**","/item-photos/**", "/register", "/user/save").permitAll()
                     .antMatchers("/backbone/**").hasAnyRole("ADMIN")
                     .antMatchers("/basket/**" ).hasAnyRole("ADMIN", "USER")
                     .anyRequest().authenticated()

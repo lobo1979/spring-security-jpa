@@ -6,10 +6,10 @@
 
   <title>Nový používateľ</title>
 </head>
-<div class = "mx-4" th:fragment="adminadduser">
+<div class = "mx-4" th:fragment="adduser">
   <h1>Nový používateľ</h1>
 
-  <form action="#" th:action="@{/backbone/user/save}" th:object="${user}" method="POST">
+  <form action="#" th:action="@{/user/save}" th:object="${user}" method="POST">
     <hr>
     <label class="form-label mt-2" for="inputLogin">User name</label>
     <input type="text" th:field="*{userName}" class="form-control col-2" id="inputLogin">
@@ -18,23 +18,12 @@
     <label class="form-label mt-2" for="inputEmail">Email</label>
     <input type="email" th:field="*{email}" class="form-control col-2" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
 
-    <label class="form-label mt-2" for="inputActive">Active</label>
-    <input type="checkbox" th:field="*{active}" class="form-control col-1" id="inputActive">
-
-
-    <label class="form-label mt-2" for="exampleSelect1">Department</label>
-    </p>
-    <select multiple=""  class="form-select" id="exampleSelect1" th:field="*{roles}">
-      <option th:each="rol:${listOfRoles}" th:value="${rol.id}" th:text="${rol.role}"></option>
-    </select>
-    </p>
-
     <hr>
 
     <button type="submit" class="btn btn-info col-3">Pridať</button>
   </form>
 
 
-  <a th:href = "@{/backbone/user/all}"> Back to home page</a>
+  <a th:href = "@{/}"> Back to home page</a>
 </div>
 </html>

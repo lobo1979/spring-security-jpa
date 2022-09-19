@@ -15,9 +15,9 @@
 
         <!--img th:src="/@{*{photosImagePath}}"/-->
 
-        <label class="form-label mt-4" for="inputName">Názov položky</label>
-        <input type="text" th:field="*{name}" class="form-control col-4" id="inputName">
-        <label class="form-label mt-4" for="inputDescription">Popis položky</label>
+        <label class="form-label mt-2" for="inputName">Názov položky</label>
+        <input type="text" th:field="*{name}" class="form-control col-2" id="inputName">
+        <label class="form-label mt-2" for="inputDescription">Popis položky</label>
         <textarea class="form-control" id="inputDescription" th:field="*{description}" rows="4"></textarea>
 
         <p>
@@ -35,15 +35,14 @@
             </select>
         </div>
 
-
-        <hr>
-        <button type="submit" class="btn btn-info col-3">Uložiť</button>
-
         <div>
             <label>Obrázky: </label>
             <input type="file" name="image" accept="image/png, image/jpeg"/>
         </div>
 
+        <p></p>
+        <hr>
+        <button type="submit" class="btn btn-info col-3">Uložiť</button>
 
     </form>
 

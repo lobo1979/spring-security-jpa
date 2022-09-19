@@ -7,11 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
-public class BasketServiceImpl implements BasketService{
+public class BasketServiceImpl implements BasketService {
 
     @Autowired
     private BasketRepository basketRepository;
@@ -28,7 +30,12 @@ public class BasketServiceImpl implements BasketService{
 
     @Override
     public Basket getBasketById(long id) {
-        return basketRepository.getReferenceById(id);
+        try {
+            Optional<Basket> bas = basketRepository.findById(id);
+            return bas.get();
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     @Override
@@ -38,18 +45,18 @@ public class BasketServiceImpl implements BasketService{
 
     @Override
     public Page<Basket> findPaginated(int pageNo, int pageSize) {
-        Pageable pagable = PageRequest.of(pageNo-1, pageSize);
+        Pageable pagable = PageRequest.of(pageNo - 1, pageSize);
         return this.basketRepository.findAll(pagable);
     }
 
     public List<Basket> getBasketItemsByUserName(String username) {
         List<Basket> bas = null;
         try {
-             bas = basketRepository.getBasketItemsByUserName(username);
-        }catch (Exception ex){
+            bas = basketRepository.getBasketItemsByUserName(username);
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return bas ;
+        return bas;
     }
 
 

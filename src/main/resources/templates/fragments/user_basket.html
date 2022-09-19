@@ -1,13 +1,14 @@
 <div class="mx-4 col-sm-8" th:fragment="userbasket">
-    <form method="post" th:object="${basketList}">
+
         <div class="my-2">
             <!-- @ reprezentuje root webovu adresu aplikacie -->
             <h1>Košík</h1>
             <hr>
-            <table border="1" class="table table-striped table-responsive-md">
+            <table border="0" class="table table-striped table-responsive-md">
                 <thead>
                 <tr>
-                    <th>Názov položky</th>
+                    <th>Položka</th>
+                    <th></th>
                     <th>Farba</th>
                     <th>Velkosť</th>
                     <th>Počet</th>
@@ -16,10 +17,18 @@
                 </thead>
                 <tbody>
                 <tr th:each="itm:${basketList}">
+                    <td><img th:if="${itm.items?.photo}" th:src="@{${itm.items?.photosImagePath}}" th:width="100"/></td>
                     <td th:text="${itm.items?.name}"></td>
                     <td th:text="${itm.color}"></td>
                     <td th:text="${itm.size}"></td>
                     <td th:text="${itm.pcs}"></td>
+                    <td th:text="${itm.items?.price}"></td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                            <a th:href="@{/basket/item/update/{userName}/{itemId}(userName=${#authentication.name}, itemId=${itm.id})}" class="btn btn-info col-6">Upraviť</a>
+                            <a th:href="@{/basket/item/delete/{userName}/{itemId}(userName=${#authentication.name}, itemId=${itm.id})}" class="btn btn-danger col-6">Odobrať</a>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -44,5 +53,4 @@
                 </div>
             </div-->
         </div>
-    </form>
 </div>

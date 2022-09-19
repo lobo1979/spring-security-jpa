@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PT shop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
+          integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+
+    <div th:replace="~{fragments/user_footer :: userfooter-css}"></div>
+
+</head>
+<body>
+
+<div class="w-100">
+    <div  th:replace="fragments/user_navbar :: usernavbar"></div>
+
+    <div  th:replace="fragments/user_item_update :: useritemupdate"></div>
+
+
+    <div class="container w-50 pt-5">
+        <table class="table compact">
+            <thead>
+            <tr>
+                <td colspan="10">Tričk&aacute;, topy, svetre, sak&aacute;, ko&scaron;ele, sukne, odevy, nohavice, dž&iacute;nsy,
+                    mikiny
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th style="text-align: center;" colspan="7">veľkosti</th>
+                <th style="text-align: center;" colspan="3">V&auml;č&scaron;ie veľkosti</th>
+            </tr>
+            <tr>
+                <th>Veľkosť</th>
+                <th style="text-align: center;">XS</th>
+                <th style="text-align: center;" colspan="1">S</th>
+                <th style="text-align: center;" colspan="1">M</th>
+                <th style="text-align: center;" colspan="1">L</th>
+                <th style="text-align: center;">XL</th>
+                <th style="text-align: center;">XXL</th>
+                <th style="text-align: center;">1XL</th>
+                <th style="text-align: center;">2XL</th>
+                <th style="text-align: center;">3XL</th>
+            </tr>
+            <!--<tr><th></th>
+                <td style="text-align: center;"><span>42</span></td>
+                <td style="text-align: center;"><span>44</span></td>
+                <td style="text-align: center;"><span>46</span></td>
+                <td style="text-align: center;"><span>49</span></td>
+                <td style="text-align: center;"><span>52</span></td>
+                <td style="text-align: center;"><span>55</span></td>
+                <td style="text-align: center;"><span>58</span></td>
+                <td style="text-align: center;"><span>61</span></td>
+                <td style="text-align: center;"><span>64</span></td>
+                </tr>-->
+            <tr>
+                <th>GB</th>
+                <td style="text-align: center;"><span>6</span></td>
+                <td style="text-align: center;"><span>8</span></td>
+                <td style="text-align: center;"><span>10</span></td>
+                <td style="text-align: center;"><span>13</span></td>
+                <td style="text-align: center;"><span>16</span></td>
+                <td style="text-align: center;"><span>19</span></td>
+                <td style="text-align: center;"><span>22</span></td>
+                <td style="text-align: center;"><span>25</span></td>
+                <td style="text-align: center;"><span>28</span></td>
+            </tr>
+            <tr>
+                <th>US</th>
+                <td style="text-align: center;"><span>4</span></td>
+                <td style="text-align: center;"><span>6</span></td>
+                <td style="text-align: center;"><span>8</span></td>
+                <td style="text-align: center;"><span>11</span></td>
+                <td style="text-align: center;"><span>14</span></td>
+                <td style="text-align: center;"><span>17</span></td>
+                <td style="text-align: center;"><span>20</span></td>
+                <td style="text-align: center;"><span>23</span></td>
+                <td style="text-align: center;"><span>25</span></td>
+            </tr>
+            <tr>
+                <th>Obvod hrudn&iacute;ka</th>
+                <td style="text-align: center;"><span>82</span></td>
+                <td style="text-align: center;"><span>86</span></td>
+                <td style="text-align: center;"><span>90</span></td>
+                <td style="text-align: center;"><span>96</span></td>
+                <td style="text-align: center;"><span>102</span></td>
+                <td style="text-align: center;"><span>108</span></td>
+                <td style="text-align: center;"><span>114</span></td>
+                <td style="text-align: center;"><span>120</span></td>
+                <td style="text-align: center;"><span>126</span></td>
+            </tr>
+            <tr>
+                <th>Obvod p&aacute;sa</th>
+                <td style="text-align: center;"><span>64</span></td>
+                <td style="text-align: center;"><span>68</span></td>
+                <td style="text-align: center;"><span>72</span></td>
+                <td style="text-align: center;"><span>78</span></td>
+                <td style="text-align: center;"><span>84</span></td>
+                <td style="text-align: center;"><span>90</span></td>
+                <td style="text-align: center;"><span>96</span></td>
+                <td style="text-align: center;"><span>102</span></td>
+                <td style="text-align: center;"><span>108</span></td>
+            </tr>
+            <tr>
+                <th>Obvod bokov</th>
+                <td style="text-align: center;"><span>90</span></td>
+                <td style="text-align: center;"><span>94</span></td>
+                <td style="text-align: center;"><span>98</span></td>
+                <td style="text-align: center;"><span>104</span></td>
+                <td style="text-align: center;"><span>110</span></td>
+                <td style="text-align: center;"><span>116</span></td>
+                <td style="text-align: center;"><span>122</span></td>
+                <td style="text-align: center;"><span>128</span></td>
+                <td style="text-align: center;"><span>134</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+<div th:replace="~{fragments/user_footer :: userfooter}"></div>
+</html>

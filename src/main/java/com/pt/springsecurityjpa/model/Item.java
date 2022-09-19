@@ -1,7 +1,11 @@
 package com.pt.springsecurityjpa.model;
 
 import javax.persistence.*;
-import java.awt.*;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Entity
 @Table(name = "Items")
@@ -26,6 +30,8 @@ public class Item {
 
     private String pocet;
 
+    private Float price;
+
 
     //Priklad na priame napojenie na jednu tabulku
     @ManyToOne(fetch = FetchType.EAGER)
@@ -34,8 +40,12 @@ public class Item {
 
     @Transient
     public String getPhotosImagePath() {
-        if (photo == null || id == null) return null;
+       if (photo.isEmpty())
+       {
+           return null;
+       }else{
         return "/item-photos/" + id + "/" + photo;
+       }
     }
 
     public Long getId() {
@@ -63,7 +73,7 @@ public class Item {
     }
 
     public String getPhoto() {
-        return photo;
+            return photo;
     }
 
     public void setPhoto(String photo) {
@@ -101,5 +111,14 @@ public class Item {
 
     public void setPocet(String pocet) {
         this.pocet = pocet;
+    }
+
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
     }
 }
