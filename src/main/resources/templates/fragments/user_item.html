@@ -4,6 +4,8 @@
             <!-- @ reprezentuje root webovu adresu aplikacie -->
             <!--img th:src="/@{*{photosImagePath}}"/-->
 
+
+
             <!--label class="form-label mt-4" for="inputID">ID</label-->
             <input type="hidden" th:field="*{id}" class="form-control col-4" id="inputID">
             <!--label class="form-label mt-4" for="inputName">Názov položky</label-->
@@ -11,6 +13,7 @@
             <h3><span th:text="*{name}" th:remove="tag">Title</span></h3>
             <p>
             <p>
+            <img th:if="*{photo}" th:src="@{*{photosImagePath}}" th:width="200" />
             <p>
             <!--input type="text" th:field="*{name}" class="form-control col-4" id="inputName"-->
             <!--label class="form-label mt-4" for="inputDescription">Popis položky</label-->

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -28,7 +29,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item getItemById(long id) {
-        return itemRepository.getReferenceById(id);
+        Optional<Item> itm = itemRepository.findById(id);
+        return itm.get();
     }
 
     @Override

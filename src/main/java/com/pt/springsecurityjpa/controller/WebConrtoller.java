@@ -87,7 +87,7 @@ public class WebConrtoller {
 
         user.setRoles(lr);
         userService.saveUser(user);
-        return "index";
+        return "redirect:/login";//Alebo index ak sa nechceme rovno logovat
     }
 
 

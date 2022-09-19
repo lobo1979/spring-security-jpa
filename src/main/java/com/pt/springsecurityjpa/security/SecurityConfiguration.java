@@ -42,6 +42,7 @@ public class SecurityConfiguration  {
                     .permitAll()
                     .and()
                 .logout()
+                    .logoutSuccessUrl("/") // need add to redirect to home page instead of showing login page after logout operation
                     .permitAll()
                     .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);

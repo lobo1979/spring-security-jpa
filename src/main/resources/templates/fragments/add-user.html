@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
+          integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+          integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
 
-  <title>Nový používateľ</title>
+    <title>Nový používateľ</title>
 </head>
-<div class = "mx-4" th:fragment="adduser">
-  <h1>Nový používateľ</h1>
+<div class="mx-4" th:fragment="adduser">
+    <h1>Nový používateľ</h1>
 
-  <form action="#" th:action="@{/user/save}" th:object="${user}" method="POST">
-    <hr>
-    <label class="form-label mt-2" for="inputLogin">User name</label>
-    <input type="text" th:field="*{userName}" class="form-control col-2" id="inputLogin">
-    <label class="form-label mt-2" for="inputpassword">User password</label>
-    <input type="password" th:field="*{password}" class="form-control col-2" id="inputpassword">
-    <label class="form-label mt-2" for="inputEmail">Email</label>
-    <input type="email" th:field="*{email}" class="form-control col-2" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-
-    <hr>
-
-    <button type="submit" class="btn btn-info col-3">Pridať</button>
-  </form>
+    <form action="#" th:action="@{/user/save}" th:object="${user}" method="POST">
+        <hr>
 
 
-  <a th:href = "@{/}"> Back to home page</a>
+        <label class="form-label mt-2" id="dipsTitle">Oslovenie</label>
+        <p></p>
+        <select name="title" id="dipsTitle2" th:field="*{title}">
+            <option th:each="tit : ${T(com.pt.springsecurityjpa.model.ETitle).values()}"
+                    th:value="${tit}"
+                    th:text="${tit.displayValue}">
+            </option>
+        </select>
+        <p></p>
+
+        <label class="form-label mt-2" for="inputName">Meno</label>
+        <input type="text" th:field="*{name}" class="form-control col-2" id="inputName">
+
+        <label class="form-label mt-2" for="inputSurname">Priezvisko</label>
+        <input type="text" th:field="*{surname}" class="form-control col-2" id="inputSurname">
+        <p>
+
+            <label class="form-label mt-2" for="inputLogin">Login</label>
+            <input type="text" th:field="*{userName}" class="form-control col-2" id="inputLogin">
+            <label class="form-label mt-2" for="inputpassword">Password</label>
+            <input type="password" th:field="*{password}" class="form-control col-2" id="inputpassword">
+            <label class="form-label mt-2" for="inputEmail">Email</label>
+            <input type="email" th:field="*{email}" class="form-control col-2" id="inputEmail"
+                   aria-describedby="emailHelp" placeholder="Enter email">
+
+        <hr>
+
+        <button type="submit" class="btn btn-info col-3">Pridať</button>
+    </form>
+
+
+    <a th:href="@{/}"> Back to home page</a>
 </div>
 </html>

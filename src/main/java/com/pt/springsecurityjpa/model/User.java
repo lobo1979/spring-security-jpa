@@ -11,6 +11,12 @@ public class User {
     @Column(name = "user_id", nullable = false)
     private Long id;
 
+    private String title;
+
+    private String name;
+
+    private String surname;
+
     @Column(unique = true)
     private String userName;
     private String password;
@@ -71,5 +77,27 @@ public class User {
         this.email = email;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 }

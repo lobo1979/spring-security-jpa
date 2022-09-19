@@ -11,9 +11,26 @@
 
   <form action="#" th:action="@{/backbone/user/save}" th:object="${user}" method="POST">
     <hr>
-    <label class="form-label mt-2" for="inputLogin">User name</label>
+
+    <label class="form-label mt-2" id="dipsTitle">Oslovenie</label>
+    <p></p>
+    <select name="title" id="dipsTitle2" th:field="*{title}">
+      <option th:each="tit : ${T(com.pt.springsecurityjpa.model.ETitle).values()}"
+              th:value="${tit}"
+              th:text="${tit.displayValue}">
+      </option>
+    </select>
+    <p></p>
+
+    <label class="form-label mt-2" for="inputName">Meno</label>
+    <input type="text" th:field="*{name}" class="form-control col-2" id="inputName">
+
+    <label class="form-label mt-2" for="inputSurname">Priezvisko</label>
+    <input type="text" th:field="*{surname}" class="form-control col-2" id="inputSurname">
+    <p>
+    <label class="form-label mt-2" for="inputLogin">Login</label>
     <input type="text" th:field="*{userName}" class="form-control col-2" id="inputLogin">
-    <label class="form-label mt-2" for="inputpassword">User password</label>
+    <label class="form-label mt-2" for="inputpassword">Password</label>
     <input type="password" th:field="*{password}" class="form-control col-2" id="inputpassword">
     <label class="form-label mt-2" for="inputEmail">Email</label>
     <input type="email" th:field="*{email}" class="form-control col-2" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">

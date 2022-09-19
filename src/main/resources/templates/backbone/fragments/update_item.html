@@ -18,8 +18,8 @@
 
         <!--img th:src="/@{*{photosImagePath}}"/-->
 
-        <label class="form-label mt-2" for="inputID">ID</label>
-        <input type="text" th:field="*{id}" class="form-control col-1" id="inputID">
+        <!--label class="form-label mt-2" for="inputID">ID</label-->
+        <input type="hidden" th:field="*{id}" class="form-control col-1" id="inputID">
         <label class="form-label mt-2" for="inputName">Názov položky</label>
         <input type="text" th:field="*{name}" class="form-control col-2" id="inputName">
         <label class="form-label mt-2" for="inputDescription">Popis položky</label>
@@ -42,7 +42,12 @@
         <label class="form-label mt-2" for="inputPrice">Cena</label>
         <input type="text" th:field="*{price}" class="form-control col-1" id="inputPrice">
 
-
+        <p>
+        <div>
+            <label>Obrázky: </label>
+            <input type="file" name="image" accept="image/png, image/jpeg"/>
+        </div>
+        <p>
         <!--div class="form-group">
             <label for="dipsColor">Farba</label>
             <select name="color" th:field="*{color}" id="dipsColor">

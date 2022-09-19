@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService{
@@ -28,7 +29,8 @@ public class ManufacturerServiceImpl implements ManufacturerService{
 
     @Override
     public Manufacturer getManufacturerById(long id) {
-        return manufacturerRepository.getReferenceById(id);
+        Optional<Manufacturer> man = manufacturerRepository.findById(id);
+        return man.get();
     }
 
     @Override

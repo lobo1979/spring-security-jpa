@@ -6,13 +6,31 @@
 
   <title>Nový používateľ</title>
 </head>
-<div class = "mx-4" th:fragment="adminupdateuser">
+<div class = "mx-4 pb-6" th:fragment="adminupdateuser">
   <h1>Upraviť údaje o použivateľovi</h1>
 
-  <form action="#" th:action="@{/backbone/user/save}" th:object="${user}" method="POST">
+  <form action="#" th:action="@{/backbone/user/save}" th:object="${user}" method="POST" class = "pb-2" >
     <hr>
-    <label class="form-label mt-2" for="inputID">ID</label>
-    <input type="text" th:field="*{id}" class="form-control col-1" id="inputID">
+    <!--label class="form-label mt-2" for="inputID">ID</label-->
+    <input type="hidden" th:field="*{id}" class="form-control col-1" id="inputID">
+
+    <label class="form-label mt-2" id="dipsTitle">Oslovenie</label>
+    <p></p>
+    <select name="title" id="dipsTitle2" th:field="*{title}">
+      <option th:each="tit : ${T(com.pt.springsecurityjpa.model.ETitle).values()}"
+              th:value="${tit}"
+              th:text="${tit.displayValue}">
+      </option>
+    </select>
+    <p></p>
+
+    <label class="form-label mt-2" for="inputName">Meno</label>
+    <input type="text" th:field="*{name}" class="form-control col-2" id="inputName">
+
+    <label class="form-label mt-2" for="inputSurname">Priezvisko</label>
+    <input type="text" th:field="*{surname}" class="form-control col-2" id="inputSurname">
+    <p></p>
+
     <label class="form-label mt-2" for="inputLogin">Login</label>
     <input type="text" th:field="*{userName}" class="form-control col-2" id="inputLogin">
     <label class="form-label mt-2" for="inputpassword">Heslo</label>
@@ -23,15 +41,16 @@
     <label class="form-label mt-2" for="inputActive">Actívny</label>
     <input type="checkbox" th:field="*{active}" class="form-control col-1" id="inputActive">
 
-
+    <p></p>
     <label class="form-label mt-2" for="exampleSelect1">Rola</label>
-    </p>
+    <p></p>
     <select multiple=""  class="form-select" id="exampleSelect1" th:field="*{roles}">
       <option th:each="rol:${listOfRoles}" th:value="${rol.id}" th:text="${rol.role}"></option>
     </select>
-    </p>
     <hr>
     <button type="submit" class="btn btn-info col-3">Uložiť</button>
+    <p></p>
+    <p></p>
   </form>
 
 </div>

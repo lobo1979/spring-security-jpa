@@ -20,15 +20,10 @@
                                 <span th:text="${itm.description}"></span>
                             </div>
                             <div class="row col-12">
-                                <div class="col1 col-4">
-                                </div>
-                                <div class="col1 col-4">
-                                    <label>Farba:</label>
-                                    <span th:text="${itm.color}"></span>
-                                </div>
-                                <div class="col2 col-4">
-                                    <label>Veľkosť:</label>
-                                    <span th:text="${itm.size}"></span>
+                                <div class="col1 col-8">
+                                    <p></p>
+                                    <label>Výrobca:</label>
+                                    <span style="text-align: right;" th:text="${itm.manufacturer?.name}"></span>
                                 </div>
                             </div>
                         </div>
